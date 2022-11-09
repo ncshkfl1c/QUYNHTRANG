@@ -1,0 +1,62 @@
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: #000;
+}
+
+canvas {
+  top: 100;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+#pinkboard {
+  animation: heartbeat 1.5s infinite;
+}
+
+.box {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  margin: auto;
+}
+h1 {
+  margin-top: 10%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.btn {
+  margin-top: 10%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.heart {
+    color: red;
+    position:fixed;
+    top: 1vh;
+    font-size: 20px;
+    animation: heartrain 2s linear forwards;
+    transition: transform 3s;
+}
+
+@keyframes heartrain {
+    to{
+        transform: translateY(105vh)
+    }
+}
