@@ -42,7 +42,6 @@ canvas {
   margin: auto;
 }
 .sign {
-  margin-top: 30%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
