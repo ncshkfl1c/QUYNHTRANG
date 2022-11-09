@@ -1,28 +1,50 @@
+const btnNO = document.getElementById("btn_no");
+btnNO.addEventListener("mouseover", function () {
+  const i = Math.floor(Math.random() * 500) + 1;
+  const j = Math.floor(Math.random() * 500) + 1;
+
+  btnNO.style.left = i + "px";
+  btnNO.style.top = j + "px";
+});
+
+let color1 = "#ff0000";
+const setBg = () => {
+  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  color1 = "#" + randomColor;
+};
+
+let getNew = document.getElementById("ChgColor");
+getNew.addEventListener("click", setBg);
+
 function heart() {
   const heart = document.createElement("div");
   heart.classList.add("heart");
   heart.innerText = "♥";
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.animationDuration = Math.random() * 2 + 3;
+  heart.style.color = color1;
   document.body.appendChild(heart);
   setTimeout(() => {
     heart.remove();
   }, 3000);
 }
 setInterval(heart, 200);
+
 /*
  * Settings
  */
 var settings = {
   particles: {
-    length: 10000, // maximum amount of particles
-    duration: 4, // particle duration in sec
-    velocity: 80, // particle velocity in pixels/sec
-    effect: -1.3, // play with this for a nice effect
-    size: 8, // particle size in pixels
+    length: 5000, // maximum amount of particles
+    duration: 2.5, // particle duration in sec
+    velocity: 200, // particle velocity in pixels/sec
+    effect: -0.6, // play with this for a nice effect
+    size: 13, // particle size in pixels
   },
 };
+
 /*
+ * RequestAnimationFrame polyfill by Erik Möller
  */
 (function () {
   var b = 0;
@@ -50,6 +72,7 @@ var settings = {
     };
   }
 })();
+
 /*
  * Point class
  */
@@ -77,6 +100,32 @@ var Point = (function () {
   };
   return Point;
 })();
+
+var Pointx = (function () {
+  function Pointx(x, y) {
+    this.x = typeof x !== "undefined" ? x : 0;
+    this.y = typeof y !== "undefined" ? y : 0;
+  }
+  Pointx.prototype.clone = function () {
+    return new Point(this.x, this.y);
+  };
+  Pointx.prototype.length = function (length) {
+    if (typeof length == "undefined")
+      return Math.sqrt(this.x * this.x + this.y * this.y);
+    this.normalize();
+    this.x *= length;
+    this.y *= length;
+    return this;
+  };
+  Pointx.prototype.normalize = function () {
+    var length = this.length();
+    this.x /= length * 100;
+    this.y /= length * 100;
+    return this;
+  };
+  return Point;
+})();
+
 /*
  * Particle class
  */
@@ -119,6 +168,7 @@ var Particle = (function () {
   };
   return Particle;
 })();
+
 /*
  * ParticlePool class
  */
@@ -175,6 +225,7 @@ var ParticlePool = (function () {
   };
   return ParticlePool;
 })();
+
 /*
  * Putting it all together
  */
@@ -223,7 +274,7 @@ var ParticlePool = (function () {
     }
     context.closePath();
     // create the fill
-    context.fillStyle = "#f50b02";
+    context.fillStyle = color1;
     context.fill();
     // create the image
     var image = new Image();
@@ -244,6 +295,28 @@ var ParticlePool = (function () {
     // clear canvas
     context.clearRect(0, 0, canvas.width, canvas.height);
 
+    function pointOnHeartx(t) {
+      return new Point(
+        160 * Math.pow(Math.sin(t), 3),
+        130 * Math.cos(t) -
+          20 * Math.cos(2 * t) -
+          8 * Math.cos(3 * t) -
+          4 * Math.cos(4 * t) +
+          5
+      );
+    }
+
+    function pointOnHearty(t) {
+      return new Point(
+        320 * Math.pow(Math.sin(t), 3),
+        260 * Math.cos(t) -
+          100 * Math.cos(2 * t) -
+          40 * Math.cos(3 * t) -
+          4 * Math.cos(4 * t) +
+          30
+      );
+    }
+
     // create new particles
     var amount = particleRate * deltaTime;
     for (var i = 0; i < amount; i++) {
@@ -257,6 +330,30 @@ var ParticlePool = (function () {
       );
     }
 
+    var amountx = (particleRate * deltaTime) / 5;
+    for (var i = 0; i < amountx; i++) {
+      var posx = pointOnHeartx(Math.PI - 2 * Math.PI * Math.random());
+      var dirx = pos.clone().length(100);
+      particles.add(
+        canvas.width / 2 + posx.x,
+        canvas.height / 2 - posx.y,
+        dirx.x,
+        -dirx.y
+      );
+    }
+
+    var amountx = (particleRate * deltaTime) / 2;
+    for (var i = 0; i < amountx; i++) {
+      var posx = pointOnHearty(Math.PI - 2 * Math.PI * Math.random());
+      var dirx = pos.clone().length(100);
+      particles.add(
+        canvas.width / 2 + posx.x,
+        canvas.height / 2 - posx.y,
+        dirx.x,
+        -dirx.y
+      );
+    }
+
     // update and draw particles
     particles.update(deltaTime);
     particles.draw(context, image);
@@ -264,8 +361,9 @@ var ParticlePool = (function () {
 
   // handle (re-)sizing of the canvas
   function onResize() {
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
+    var heightRatio = 1.5;
+    canvas.width = canvas.clientWidth * heightRatio;
+    canvas.height = canvas.clientHeight * heightRatio;
   }
   window.onresize = onResize;
 
