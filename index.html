@@ -9,22 +9,24 @@
     <meta name="Description" content="" />
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="slider.css">
 </head>
 
 <body>
-    <div class="btn">
-        <button id="ChgColor">CHANGE COLOR</button>
+    <div class="heartRanin"></div>
+    <div>
+        <button id="ChgColor" onClick="window.location.reload()">Random color</button>
     </div>
 
-    <audio src="NHAC.mp3" autoplay loop></audio>
+    <audio src="MUSIC\NHAC.mp3" autoplay loop></audio>
     <div class="box">
         <canvas id="pinkboard"></canvas>
     </div>
     <div>
         <div class="sign">
-            <span class="fast-flicker">W</span>Ill YOU BE MY GIRL<span class="flicker"> FRIENDS</span>
-          </div>
-        <div class="btn">
+            <span class="fast-flicker">W</span>Ill YOU BE MY GIRL<span class="flicker"> FRIENDS?</span>
+        </div>
+        <div class="btn y/n">
             <a href="#" id="btn_no">
                 <span></span>
                 <span></span>
@@ -32,7 +34,7 @@
                 <span></span>
                 NO
             </a>
-            <a href="https://www.facebook.com/habisiiizz/">
+            <a href="#" id="btn_yes">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -40,7 +42,27 @@
                 YES
             </a>
         </div>
-
+        <div style="color: white;" class="align noAnswe">Opps!! You cannot choose this Answer</div>
+    </div>
+    <!-- Slider -->
+    <div class="align sli">
+        <i>
+            <input checked type="radio" name="s"
+                style="background-image: url('https://scontent.fsgn2-1.fna.fbcdn.net/v/t39.30808-6/312046712_2680065105469809_5857326079666301019_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=hDrsWAO7OGsAX9d9gAH&_nc_ht=scontent.fsgn2-1.fna&oh=00_AfCAAFynT64Bb_QvS_fka3kJkATtCBT0yaPN_Xcl3_9PsQ&oe=6370C75C');"
+                title="Changg siêu Cute">
+            <input type="radio" name="s"
+                style="background-image: url('https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/307346741_2637354966407490_7018917244599280830_n.jpg?stp=cp6_dst-jpg&_nc_cat=108&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=O-3A0FsckWUAX_DS39J&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfAnqK3F6YY6GiR_-ACCBsQKi-Kj7odo-uhAs6_IJYBNrA&oe=63724FBA');"
+                title="Changg siêu Cute">
+            <input type="radio" name="s"
+                style="background-image: url('https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/305654805_2628719750604345_3167259800448741332_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=jMP3HFZfzeEAX87Ncrv&_nc_oc=AQlstcLwsLW0Z46TXWtECVzk5V41RRDyxoNxfFt8ETtSAzMq70crsa43SSqNcDo6xZz9mpAmEf9amSapPvQfsrYi&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfBX6CEHy9Ev2bgWTS0Pv3j-e9uCyJRB-EhpfcmFLxeC_g&oe=637209B5');"
+                title="Changg siêu Cute">
+            <input type="radio" name="s"
+                style="background-image: url('https://scontent.fsgn2-8.fna.fbcdn.net/v/t39.30808-6/287012415_2554342204708767_1227091450101335603_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=n3rKN_OMr5cAX8TH5mp&_nc_ht=scontent.fsgn2-8.fna&oh=00_AfD_NmF6FySAAdvQUlf8KaJs2PaQDvqS7WWn7jGeIuYTlg&oe=6370C685');"
+                title="Changg siêu Cute">
+            <input type="radio" name="s"
+                style="background-image: url('https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.15752-9/312885902_487409496491183_3189722115139378860_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=N96VxyimCfMAX--Av-z&_nc_ht=scontent.fsgn2-5.fna&oh=03_AdQZKMX54Mkv7xT0Dzr4UW8Ji_wpU2ZP5D3iNXB2DeLZwA&oe=6394036E');"
+                title="Changg siêu Cute">
+        </i>
     </div>
     <script src="script.js"></script>
 </body>

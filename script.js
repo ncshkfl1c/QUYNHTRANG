@@ -1,29 +1,40 @@
-const btnNO = document.getElementById("btn_no");
-btnNO.addEventListener("mouseover", function () {
-  const i = Math.floor(Math.random() * 500) + 1;
-  const j = Math.floor(Math.random() * 500) + 1;
-
-  btnNO.style.left = i + "px";
-  btnNO.style.top = j + "px";
-});
-
-let color1 = "#ff0000";
 const setBg = () => {
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);
   color1 = "#" + randomColor;
+  return color1;
 };
 
-let getNew = document.getElementById("ChgColor");
+let getNew = document.querySelector(".sign");
 getNew.addEventListener("click", setBg);
 
+const noAnswers = document.querySelector(".noAnswe");
+const yesAnswers = document.querySelector(".sli");
+
+const btnNO = document.getElementById("btn_no");
+btnNO.addEventListener("click", function () {
+  noAnswers.style.visibility = "visible";
+});
+
+let heartRain = document.querySelector(".heartRanin");
+
+const btnYES = document.getElementById("btn_yes");
+btnYES.addEventListener("click", function () {
+  yesAnswers.style.visibility = "visible";
+  noAnswers.style.visibility = "hidden";
+  heartRain.style.visibility = "visible";
+});
+
+var color1 = "#ff5757";
+//heartrain
 function heart() {
   const heart = document.createElement("div");
+
   heart.classList.add("heart");
   heart.innerText = "♥";
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.animationDuration = Math.random() * 2 + 3;
   heart.style.color = color1;
-  document.body.appendChild(heart);
+  heartRain.appendChild(heart);
   setTimeout(() => {
     heart.remove();
   }, 3000);
@@ -274,7 +285,8 @@ var ParticlePool = (function () {
     }
     context.closePath();
     // create the fill
-    context.fillStyle = color1;
+
+    context.fillStyle = setBg();
     context.fill();
     // create the image
     var image = new Image();
@@ -373,3 +385,5 @@ var ParticlePool = (function () {
     render();
   }, 10);
 })(document.getElementById("pinkboard"));
+
+document.getElementById("ChgColor").style.background = color1;
