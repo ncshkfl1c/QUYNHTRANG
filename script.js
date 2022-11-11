@@ -16,16 +16,10 @@ heartButton.addEventListener("click", () => {
 });
 
 heartButton.addEventListener("click", setBg);
-heartButton.addEventListener("mousedown", () => {
+heartButton.addEventListener("dblclick", () => {
   yesAnswers.style.visibility = "visible";
 });
 
-heartButton.addEventListener("mouseup", () => {
-  yesAnswers.style.visibility = "hidden";
-});
-heartButton.addEventListener("touchend", () => {
-  yesAnswers.style.visibility = "hidden";
-});
 heartButton.addEventListener("touchmove", () => {
   yesAnswers.style.visibility = "visible";
 });
