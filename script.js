@@ -4,24 +4,29 @@ const setBg = () => {
   return color1;
 };
 
-let getNew = document.querySelector(".sign");
-getNew.addEventListener("click", setBg);
-
-const noAnswers = document.querySelector(".noAnswe");
-const yesAnswers = document.querySelector(".sli");
-
-const btnNO = document.getElementById("btn_no");
-btnNO.addEventListener("click", function () {
-  noAnswers.style.visibility = "visible";
-});
-
+const btnYES = document.getElementById("btn_yes");
+const heartButton = document.getElementById("pinkboard");
 let heartRain = document.querySelector(".heartRanin");
 
-const btnYES = document.getElementById("btn_yes");
+// let getNew = document.querySelector(".sign");
+btnYES.addEventListener("click", setBg);
+heartButton.addEventListener("click", () => {
+  heartRain.style.visibility = "visible";
+});
+
+heartButton.addEventListener("click", setBg)
+
+// const noAnswers = document.querySelector(".noAnswe");
+const yesAnswers = document.querySelector(".sli");
+
+// const btnNO = document.getElementById("btn_no");
+// btnNO.addEventListener("click", function () {
+//   noAnswers.style.visibility = "visible";
+// });
+
 btnYES.addEventListener("click", function () {
   yesAnswers.style.visibility = "visible";
   noAnswers.style.visibility = "hidden";
-  heartRain.style.visibility = "visible";
 });
 
 var color1 = "#ff5757";
