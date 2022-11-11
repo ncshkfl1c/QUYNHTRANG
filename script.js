@@ -7,27 +7,40 @@ const setBg = () => {
 const btnYES = document.getElementById("btn_yes");
 const heartButton = document.getElementById("pinkboard");
 let heartRain = document.querySelector(".heartRanin");
+const yesAnswers = document.querySelector(".sli");
 
 // let getNew = document.querySelector(".sign");
-btnYES.addEventListener("click", setBg);
+// btnYES.addEventListener("click", setBg);
 heartButton.addEventListener("click", () => {
   heartRain.style.visibility = "visible";
 });
 
-heartButton.addEventListener("click", setBg)
+heartButton.addEventListener("click", setBg);
+heartButton.addEventListener("mousedown", () => {
+  yesAnswers.style.visibility = "visible";
+});
+
+heartButton.addEventListener("mouseup", () => {
+  yesAnswers.style.visibility = "hidden";
+});
+heartButton.addEventListener("touchend", () => {
+  yesAnswers.style.visibility = "hidden";
+});
+heartButton.addEventListener("touchmove", () => {
+  yesAnswers.style.visibility = "visible";
+});
 
 // const noAnswers = document.querySelector(".noAnswe");
-const yesAnswers = document.querySelector(".sli");
 
 // const btnNO = document.getElementById("btn_no");
 // btnNO.addEventListener("click", function () {
 //   noAnswers.style.visibility = "visible";
 // });
 
-btnYES.addEventListener("click", function () {
-  yesAnswers.style.visibility = "visible";
-  noAnswers.style.visibility = "hidden";
-});
+// btnYES.addEventListener("click", function () {
+//   yesAnswers.style.visibility = "visible";
+//   noAnswers.style.visibility = "hidden";
+// });
 
 var color1 = "#ff5757";
 //heartrain
